@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function MainBody() {
   return (
@@ -17,12 +18,12 @@ export default function MainBody() {
       <img className='w-1/3' style={{ margin: '30px', height: '100px', width: '100px' }} src="data:image/png;base64,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" alt="" />
     </div>
     <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-      <a href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-        Get Started
+      <Link to="courses" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+        Check our Courses
         <svg aria-hidden="true" className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-      </a>
+      </Link>
       <a href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-        Learn more
+        Contributors
       </a>
     </div>
   </div>
