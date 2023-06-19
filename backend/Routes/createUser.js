@@ -8,9 +8,8 @@ const jsonSecret = 'myfreakinsecretforjsonisntthatcoolafyahoo'
 router.post('/createuser', async (req, res) => {
     //checks if the user already exists in the database
     const { userName, email, password, techInterest } = req.body
-    const isUserName = await User.findOne({ userName })
     const isEmail = await User.findOne({ email })
-    if (isEmail || isUserName) {
+    if (isEmail || isEmail.userName === userName) {
         //sending boolean value to make conditional statement in the frontend
         return res.status(401).send({ userExists: true })
     }
