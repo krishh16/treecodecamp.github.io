@@ -9,9 +9,12 @@ router.post('/createuser', async (req, res) => {
     //checks if the user already exists in the database
     const { userName, email, password, techInterest } = req.body
     const isEmail = await User.findOne({ email })
-    if (isEmail || isEmail.userName === userName) {
+    const isUser = await User.findOne({userName})
+    if (isEmail) {
         //sending boolean value to make conditional statement in the frontend
         return res.status(401).send({ userExists: true })
+    } else if (isUser){
+        return res.status(400).send({userNameExists: true})
     }
     try {
         const salt = await bcrypt.genSalt(10)
@@ -27,7 +30,7 @@ router.post('/createuser', async (req, res) => {
         return res.status(200).send({ success: true })
     }
     catch (error) {
-        return res.status(400).send({ success: false })
+        return res.status(400).send({ success: false, error })
     }
 })
 
