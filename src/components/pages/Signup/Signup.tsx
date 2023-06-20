@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 export default function Signin() {
-    const [credentials, setcredentials] = useState({ userName: '', email: '', password: '', techInterest: '', heardFrom: '', profilePhoto: '' })
+    const [credentials, setcredentials] = useState({ userName: '', email: '', password: '', techInterest: '', heardFrom: '', profilePhoto: '', profession:'', bio:'' })
     const navigate = useNavigate()
        const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
@@ -11,7 +11,7 @@ export default function Signin() {
             headers: {
                 'Content-type': "application/json"
             },
-            body: JSON.stringify({ userName: credentials.userName, email: credentials.email, password: credentials.password, techInterest: credentials.techInterest, heardFrom: credentials.heardFrom, profilePhoto: credentials.profilePhoto })
+            body: JSON.stringify({ userName: credentials.userName, email: credentials.email, password: credentials.password, techInterest: credentials.techInterest, heardFrom: credentials.heardFrom, profilePhoto: credentials.profilePhoto, profession: credentials.profession, bio: credentials.bio })
         })
         const resJson = await response.json()
         console.log(resJson)
@@ -50,6 +50,14 @@ export default function Signin() {
                             <div>
                                 <label htmlFor="userName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UserName</label>
                                 <input value={credentials.userName} onChange={onChange} type="text" name="userName" id="userName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" required />
+                            </div>
+                            <div>
+                                <label htmlFor="profession" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profession</label>
+                                <input value={credentials.profession} onChange={onChange} type="text" name="profession" id="userName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" required />
+                            </div>
+                            <div>
+                                <label htmlFor="bio" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bio</label>
+                                <input value={credentials.bio} onChange={onChange} type="text" name="bio" id='bio' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" required />
                             </div>
                             <div>
                                 <label htmlFor="techInterest" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Tech interest</label>
