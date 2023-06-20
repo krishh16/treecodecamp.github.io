@@ -22,8 +22,8 @@ export default function Login() {
             return
         } else if (resJson.success) {
             alert('Login successful! Happy learning')
-            localStorage.setItem('authToken', resJson.authToken)
             navigate('/')
+            localStorage.setItem('authToken', resJson.authToken)
         }
        }
         
