@@ -21,9 +21,12 @@ export default function Login() {
             alert("No such user")
             return
         } else if (resJson.success) {
+            localStorage.setItem('authToken', resJson.authToken)
+            localStorage.setItem('userName', resJson.userName)
+            localStorage.setItem('profession', resJson.profession)
+            localStorage.setItem('bio', resJson.bio)
             alert('Login successful! Happy learning')
             navigate('/')
-            localStorage.setItem('authToken', resJson.authToken)
         }
        }
         

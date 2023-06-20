@@ -52,25 +52,11 @@ router.post('/loginuser', async (req, res) => {
 
         }
         const authToken = jwt.sign(data, jsonSecret)
-        return res.json({ success: true, authToken })
+        return res.json({ success: true, authToken,userName: userEmail.userName, bio: userEmail.bio, profession: userEmail.profession })
     }
     catch (error) {
         return res.send({ success: false, error })
     }
 })
-router.get('/profile', (req, res) => {
-    const authToken = req.headers.Authorization.split(' ')[1];
 
-    try {
-        // Verify and decode the authToken
-        const decodedToken = jwt.verify(authToken, jsonSecret);
-        const userId = decodedToken.id
-        const userData = User.findOne({ userName:userId.userName, profession: userId.profession, bio: userId.bio })
-
-
-        res.status(400).json(userData);
-    } catch (error) {
-        res.status(401).json({ error: 'Invalid authToken' });
-    }
-});
 module.exports = router

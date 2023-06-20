@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-export default function Signin() {
+export default function Signup() {
     const [credentials, setcredentials] = useState({ userName: '', email: '', password: '', techInterest: '', heardFrom: '', profilePhoto: '', profession:'', bio:'' })
     const navigate = useNavigate()
        const handleSubmit = async (e: { preventDefault: () => void }) => {
