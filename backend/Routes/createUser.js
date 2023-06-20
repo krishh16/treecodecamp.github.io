@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
-const jsontoken = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const jsonSecret = 'myfreakinsecretforjsonisntthatcoolafyahoo'
 //api for creating user and posting it on mongod db
 router.post('/createuser', async (req, res) => {
@@ -37,7 +37,7 @@ router.post('/createuser', async (req, res) => {
 })
 
 router.post('/loginuser', async (req, res) => {
-    const { userName, email, password } = req.body
+    const { email, password } = req.body
     try {
         const userEmail = await User.findOne({ email })
         const comparePasswd = await bcrypt.compare(password, userEmail.password)
@@ -51,11 +51,11 @@ router.post('/loginuser', async (req, res) => {
                 id: userEmail.id
             }
         }
-        const authToken = jsontoken.sign(data, jsonSecret)
+        const authToken = jwt.sign(data, jsonSecret)
        return res.json({ success: true, authToken })
     }
     catch (error) {
-        return res.send(error)
+        return res.send({success: false,error})
     }
 })
 module.exports = router
