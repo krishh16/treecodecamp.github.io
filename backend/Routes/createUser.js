@@ -7,7 +7,7 @@ const jsonSecret = 'myfreakinsecretforjsonisntthatcoolafyahoo'
 //api for creating user and posting it on mongod db
 router.post('/createuser', async (req, res) => {
     //checks if the user already exists in the database
-    const { userName, email, password, techInterest } = req.body
+    const { userName, email, password, techInterest, profession, bio } = req.body
     const isEmail = await User.findOne({ email })
     const isUser = await User.findOne({userName})
     if (isEmail) {
@@ -24,7 +24,9 @@ router.post('/createuser', async (req, res) => {
             userName,
             email,
             password: hashedPWD,
-            techInterest
+            techInterest,
+            profession,
+            bio
         }
         )
         return res.status(200).send({ success: true })
