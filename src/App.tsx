@@ -10,6 +10,7 @@ import Signup from './components/pages/Signup/Signup';
 import Login from './components/pages/LoginIn/Login';
 import Courses from './components/pages/Courses/Courses';
 import Profile from './components/pages/profile/profile';
+import Terminal from './components/pages/Terminal/Terminal.jsx';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/javascript-dsa" element={<Terminal/>}/>
       </Routes>
     </Router>
   );
