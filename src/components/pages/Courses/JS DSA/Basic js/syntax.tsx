@@ -1,34 +1,9 @@
-import React from 'react';
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-import NavBar from '../../../../NavBar';
-export default function Syntax(props: {}) {
-  const onChange = React.useCallback((value: String) => {
-    console.log('value:', value);
-    val = value
-  }, []);
-  var val: String = ''
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-    console.log(val)
-  }
+import Terminal from '../../../Terminal/Terminal'
+import { Instruction, syntaxHeader, syntaxTests, startCode } from './instruction'
+export default function Syntax() {
   return (
     <div>
-      <NavBar />
-      <div className='flex'>
-        <div className='' style={{ width: '50%' }}>
-
-        </div>
-        <div>
-          <CodeMirror
-            width='50vw'
-            height='50vh'
-            theme='dark'
-            extensions={[javascript({ jsx: true })]}
-            onChange={onChange}
-          />
-        </div>
-      </div>
+      <Terminal test={syntaxTests} instruction={Instruction} title={syntaxHeader} startingCode={startCode} />
     </div>
-  );
+  )
 }
