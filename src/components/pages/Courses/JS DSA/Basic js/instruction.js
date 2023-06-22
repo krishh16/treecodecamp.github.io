@@ -43,4 +43,4 @@ export const Instruction = (
 )
 export const startCode = '//declare a variable named a with value 10'
 export const syntaxTests = ['a should be equal to 3']
-export const syntaxHeader = 'Declaring Variables'
+export const syntaxHeader = <h1 className='font-bold text-white text-center' style={{fontSize:'25px'}}>Declaring Variables in JS</h1>
