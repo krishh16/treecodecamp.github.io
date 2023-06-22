@@ -14,6 +14,7 @@ import Terminal from './components/pages/Terminal/Terminal';
 import JsSubCourses from './components/pages/Courses/JS DSA/JsSubCourses';
 import MachineLearning from './components/pages/Courses/ML/MachineLearning';
 import PythonSubModules from './components/pages/Courses/Python/PythonSubModules';
+import Syntax from './components/pages/Courses/JS DSA/Basic js/syntax';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/js-dsa" element={<JsSubCourses/>}/>
-        <Route path="/js-dsa/basic-js" element={<JsSubCourses/>}/>
+        <Route path="/basic-js" element={<Syntax/>}/>
         <Route path="/js-dsa/es6" element={<JsSubCourses/>}/>
         <Route path="/js-dsa/js-algorithms" element={<JsSubCourses/>}/>
         <Route path="/ml-courses" element={<MachineLearning/>}/>
